@@ -397,7 +397,142 @@
   .footer-flag .f3 { background: var(--rouge); }
   .footer-tagline { font-size: 12px; color: #444; font-family: 'Playfair Display', serif; font-style: italic; }
 
-  /* ── MOBILE NAV ── */
+  /* ── PUBLICATIONS ── */
+  .pub-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-top: 3rem; margin-bottom: 2.5rem; }
+  .pub-tab {
+    padding: 10px 22px; font-size: 14px; font-weight: 500; cursor: pointer;
+    color: var(--gris); border-bottom: 2px solid transparent; margin-bottom: -2px;
+    transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .pub-tab.active { color: var(--bleu); border-bottom-color: var(--bleu); }
+  .pub-tab:hover:not(.active) { color: var(--noir); }
+
+  .pub-panel { display: none; }
+  .pub-panel.active { display: block; }
+
+  /* Featured article */
+  .pub-featured {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    margin-bottom: 2rem; transition: box-shadow 0.2s;
+  }
+  .pub-featured:hover { box-shadow: 0 12px 40px rgba(0,35,149,0.1); }
+  .pub-featured-img { position: relative; min-height: 320px; overflow: hidden; }
+  .pub-featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pub-featured-img .img-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--bleu); color: white; font-size: 11px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+  }
+  .pub-featured-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .pub-featured-body .pub-cat {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--rouge); margin-bottom: 0.75rem;
+  }
+  .pub-featured-body h2 {
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700;
+    line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.3px;
+  }
+  .pub-featured-body p { font-size: 15px; color: var(--gris); line-height: 1.7; margin-bottom: 1.5rem; }
+  .pub-meta { display: flex; align-items: center; gap: 12px; }
+  .pub-author-av {
+    width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .pub-author-av.blue { background: var(--bleu); }
+  .pub-author-av.red { background: var(--rouge); }
+  .pub-author-av.dark { background: var(--noir); }
+  .pub-meta-text { font-size: 13px; }
+  .pub-meta-text strong { display: block; font-weight: 500; }
+  .pub-meta-text span { color: var(--gris); }
+  .pub-read-link {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500;
+    color: var(--bleu); text-decoration: none; margin-top: 1.25rem;
+    transition: gap 0.2s;
+  }
+  .pub-read-link:hover { gap: 10px; }
+
+  /* Article grid */
+  .pub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pub-card {
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; background: white;
+  }
+  .pub-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,35,149,0.09); }
+  .pub-card-img { position: relative; height: 180px; overflow: hidden; }
+  .pub-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+  .pub-card:hover .pub-card-img img { transform: scale(1.04); }
+  .pub-card-img .pub-cat-badge {
+    position: absolute; bottom: 10px; left: 10px; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+  }
+  .badge-blue { background: var(--bleu); color: white; }
+  .badge-red { background: var(--rouge); color: white; }
+  .badge-dark { background: rgba(0,0,0,0.75); color: white; }
+  .badge-white { background: white; color: var(--noir); }
+  .pub-card-body { padding: 1.25rem; }
+  .pub-card-body h3 {
+    font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700;
+    line-height: 1.3; margin-bottom: 0.5rem;
+  }
+  .pub-card-body p { font-size: 13px; color: var(--gris); line-height: 1.6; margin-bottom: 1rem; }
+  .pub-card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .pub-card-author { display: flex; align-items: center; gap: 8px; }
+  .mini-av {
+    width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 10px; font-weight: 700; color: white; flex-shrink: 0;
+  }
+  .mini-av.blue { background: var(--bleu); }
+  .mini-av.red { background: var(--rouge); }
+  .mini-av.dark { background: #555; }
+  .pub-card-author span { font-size: 12px; color: var(--gris); }
+  .pub-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gris); }
+
+  /* Podcast episodes enhanced */
+  .ep-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .ep-full {
+    display: grid; grid-template-columns: 160px 1fr; gap: 0;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; background: white;
+  }
+  .ep-full:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,35,149,0.09); }
+  .ep-full-img { position: relative; }
+  .ep-full-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ep-full-img .ep-overlay {
+    position: absolute; inset: 0; background: rgba(0,35,149,0.5);
+    display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;
+  }
+  .ep-full:hover .ep-overlay { opacity: 1; }
+  .ep-play-big {
+    width: 48px; height: 48px; border-radius: 50%; background: white;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
+  }
+  .ep-play-big svg { width: 18px; height: 18px; fill: var(--bleu); margin-left: 3px; }
+  .ep-full-body { padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .ep-full-body .ep-num-sm {
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
+    color: var(--rouge); text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .ep-full-body h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 0.4rem; }
+  .ep-full-body p { font-size: 12px; color: var(--gris); line-height: 1.5; }
+  .ep-full-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
+  .ep-dur { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gris); }
+  .ep-play-sm {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--rouge);
+    display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
+  }
+  .ep-play-sm svg { width: 11px; height: 11px; fill: white; margin-left: 2px; }
+
+  @media (max-width: 900px) {
+    .pub-featured { grid-template-columns: 1fr; }
+    .pub-featured-img { min-height: 220px; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .ep-grid { grid-template-columns: 1fr; }
+    .ep-full { grid-template-columns: 120px 1fr; }
+  }
+
+
   .mobile-menu {
     display: none; position: fixed; top: 64px; left: 0; right: 0;
     background: white; border-bottom: 1px solid var(--border); z-index: 99;
@@ -457,6 +592,7 @@
     <li><a href="#team">Équipe</a></li>
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#resources">Ressources</a></li>
     <li><a href="#join" class="nav-cta">Rejoindre</a></li>
   </ul>
@@ -471,6 +607,7 @@
   <a href="#team" onclick="toggleMenu()">Équipe</a>
   <a href="#podcast" onclick="toggleMenu()">Podcast</a>
   <a href="#gallery" onclick="toggleMenu()">Galerie</a>
+  <a href="#publications" onclick="toggleMenu()">Publications</a>
   <a href="#resources" onclick="toggleMenu()">Ressources</a>
   <a href="#join" onclick="toggleMenu()">Rejoindre</a>
 </div>
@@ -967,6 +1104,357 @@
   </div>
 </section>
 
+<!-- PUBLICATIONS -->
+<div class="section-divider"></div>
+<section id="publications" style="max-width:1100px;margin:0 auto;padding:6rem 3rem;">
+  <span class="section-label">Publications · Média</span>
+  <h2 class="section-title">Stories & <em>content</em></h2>
+  <p class="section-desc">Articles, podcast sessions, event recaps, and cultural essays — created by TUK students for the francophone community.</p>
+
+  <div class="pub-tabs">
+    <button class="pub-tab active" onclick="switchTab('articles')">✍️ Articles</button>
+    <button class="pub-tab" onclick="switchTab('podcast-ep')">🎙️ Podcast Episodes</button>
+    <button class="pub-tab" onclick="switchTab('recaps')">📸 Event Recaps</button>
+  </div>
+
+  <!-- ARTICLES PANEL -->
+  <div class="pub-panel active" id="panel-articles">
+    <div class="pub-featured">
+      <div class="pub-featured-img">
+        <img src="https://picsum.photos/seed/paris1/700/500" alt="Featured article placeholder">
+        <span class="img-badge">Featured</span>
+      </div>
+      <div class="pub-featured-body">
+        <span class="pub-cat">Culture · Language</span>
+        <h2>Why French is Africa's language of the future</h2>
+        <p>With over 30 African nations speaking French and the continent's population set to double by 2050, French is becoming one of the most strategically important languages for young Kenyans. Our president Amina Patel explores why.</p>
+        <div class="pub-meta">
+          <div class="pub-author-av blue">AP</div>
+          <div class="pub-meta-text">
+            <strong>Amina Patel</strong>
+            <span>May 10, 2025 · 8 min read</span>
+          </div>
+        </div>
+        <a href="#" class="pub-read-link">Read full article →</a>
+      </div>
+    </div>
+
+    <div class="pub-grid">
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/french2/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-red">Language Tips</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>10 French phrases every Kenyan student should know</h3>
+          <p>From the classroom to the boardroom — practical phrases that will immediately make you sound more fluent and confident.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av red">LW</div>
+              <span>Lilian Wambua</span>
+            </div>
+            <span class="pub-date">Apr 22, 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/bastille3/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-blue">Culture</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>Bastille Day in Nairobi — a recap of our biggest celebration yet</h3>
+          <p>How 200 students came together to celebrate France's national day with food, music, and a whole lot of <em>joie de vivre</em>.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av dark">FK</div>
+              <span>Fatima Kariuki</span>
+            </div>
+            <span class="pub-date">Jul 16, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/delf4/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-dark">Certification</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>How I passed DELF B2 in 4 months while studying engineering</h3>
+          <p>James Ochieng shares his honest study strategy, the resources he used, and what he wished he knew before taking the exam.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av blue">JO</div>
+              <span>James Ochieng</span>
+            </div>
+            <span class="pub-date">Mar 5, 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/food5/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-red">Food & Culture</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>Crêpes, cassoulet et café — our French cuisine night in photos</h3>
+          <p>A picture essay from our most delicious event yet — students cooking and sharing traditional French recipes from scratch.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av dark">SI</div>
+              <span>Sophie Irungu</span>
+            </div>
+            <span class="pub-date">Feb 28, 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/rwandaf6/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-blue">Francophonie</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>Rwanda's French comeback — what it means for East Africa</h3>
+          <p>After a decade of English-only policy, Rwanda rejoined La Francophonie in 2024. We explore what this shift means for the region.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av red">DN</div>
+              <span>David Njoroge</span>
+            </div>
+            <span class="pub-date">Jan 14, 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/cinema7/600/400" alt="Article image">
+          <span class="pub-cat-badge badge-dark">Film</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>The 5 French films that changed the way I think about language</h3>
+          <p>From Amélie to Les Intouchables — club member Emmanuel Mutua picks the films that made him fall in love with French cinema.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av blue">EM</div>
+              <span>Emmanuel Mutua</span>
+            </div>
+            <span class="pub-date">Dec 3, 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PODCAST PANEL -->
+  <div class="pub-panel" id="panel-podcast-ep">
+    <div class="ep-grid">
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep1pod/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 01</div>
+            <h3>Pourquoi le Français? — Why French in Kenya?</h3>
+            <p>The founding members discuss what the French language means for career opportunities in East Africa.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">28 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep2africa/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 02</div>
+            <h3>L'Afrique Francophone — The French-speaking Africa</h3>
+            <p>Exploring Kenya's relationships with francophone neighbours and why French matters for East Africans.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">34 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep3food/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 03</div>
+            <h3>Recettes & Souvenirs — Food and French memory</h3>
+            <p>Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">22 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep4lesson/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 04</div>
+            <h3>Leçon du jour — French greetings & everyday basics</h3>
+            <p>A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">19 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep5jobs/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 05</div>
+            <h3>Carrières Francophones — French for your career</h3>
+            <p>Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">41 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ep-full">
+        <div class="ep-full-img">
+          <img src="https://picsum.photos/seed/ep6music/400/300" alt="Episode cover">
+          <div class="ep-overlay">
+            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="ep-full-body">
+          <div>
+            <div class="ep-num-sm">Episode 06</div>
+            <h3>La Musique Française — from Brel to Stromae</h3>
+            <p>A musical journey through French-language music — from classic chansons to contemporary Afropop crossovers.</p>
+          </div>
+          <div class="ep-full-footer">
+            <span class="ep-dur">37 min</span>
+            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECAPS PANEL -->
+  <div class="pub-panel" id="panel-recaps">
+    <div class="pub-featured">
+      <div class="pub-featured-img">
+        <img src="https://picsum.photos/seed/recap-bastille/700/500" alt="Event recap image">
+        <span class="img-badge">Latest Recap</span>
+      </div>
+      <div class="pub-featured-body">
+        <span class="pub-cat">Event Recap · Annual</span>
+        <h2>Bastille Day Fête 2024 — in pictures and words</h2>
+        <p>Over 200 students, staff, and guests gathered for our grandest celebration yet. Here's the full story of an unforgettable evening of French culture, food, and community in Nairobi.</p>
+        <div class="pub-meta">
+          <div class="pub-author-av red">FK</div>
+          <div class="pub-meta-text">
+            <strong>Fatima Kariuki</strong>
+            <span>July 16, 2024 · 5 min read</span>
+          </div>
+        </div>
+        <a href="#" class="pub-read-link">Read full recap →</a>
+      </div>
+    </div>
+
+    <div class="pub-grid">
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/recap-franco/600/400" alt="Event image">
+          <span class="pub-cat-badge badge-blue">Cultural Week</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>Semaine de la Francophonie 2024 — a week to remember</h3>
+          <p>Highlights from five days of talks, music, food, and French language activities that lit up the TUK campus.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av dark">SI</div>
+              <span>Sophie Irungu</span>
+            </div>
+            <span class="pub-date">Mar 25, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/recap-film/600/400" alt="Event image">
+          <span class="pub-cat-badge badge-dark">Ciné-club</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>Ciné-club April — Les Intouchables screening recap</h3>
+          <p>Our biggest film night yet drew 80 students for a viewing and lively post-film discussion in French and English.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av blue">EM</div>
+              <span>Emmanuel Mutua</span>
+            </div>
+            <span class="pub-date">Apr 8, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-card-img">
+          <img src="https://picsum.photos/seed/recap-delf/600/400" alt="Event image">
+          <span class="pub-cat-badge badge-red">Workshop</span>
+        </div>
+        <div class="pub-card-body">
+          <h3>DELF prep workshop — what our students said</h3>
+          <p>Testimonials and key takeaways from the March intensive DELF/DALF preparation workshop held over a full weekend.</p>
+          <div class="pub-card-footer">
+            <div class="pub-card-author">
+              <div class="mini-av red">LW</div>
+              <span>Lilian Wambua</span>
+            </div>
+            <span class="pub-date">Mar 12, 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <div class="section-divider"></div>
 <footer>
@@ -988,6 +1476,7 @@
       <div class="footer-col">
         <h4>Activities</h4>
         <ul>
+          <li><a href="#publications">Articles</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#podcast">Podcast</a></li>
           <li><a href="#resources">Resources</a></li>
@@ -1013,6 +1502,13 @@
 </footer>
 
 <script>
+  function switchTab(id) {
+    document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pub-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
   function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('open');
@@ -1043,7 +1539,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card').forEach(el => {
+  document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card, .pub-card, .ep-full').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
