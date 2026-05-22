@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Club Français — TUK</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #002395;
+    --rouge: #ED2939;
+    --blanc: #FFFFFF;
+    --bleu-light: #e8ecf8;
+    --rouge-light: #fdeaec;
+    --noir: #0d0d0d;
+    --gris: #6b6b6b;
+    --gris-light: #f4f3f0;
+    --border: #e0deda;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanc);
+    color: var(--noir);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 64px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-flag {
+    display: flex; height: 28px; width: 42px; border-radius: 3px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .nav-flag span { flex: 1; }
+  .nav-flag .f1 { background: var(--bleu); }
+  .nav-flag .f2 { background: var(--blanc); border-left: 1px solid #eee; border-right: 1px solid #eee; }
+  .nav-flag .f3 { background: var(--rouge); }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+  .nav-brand span { color: var(--bleu); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--gris); font-size: 13.5px; font-weight: 400;
+    letter-spacing: 0.3px; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--noir); }
+  .nav-cta {
+    background: var(--bleu); color: white !important; padding: 8px 18px;
+    border-radius: 20px; font-weight: 500 !important; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #001880 !important; color: white !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--noir); border-radius: 2px; transition: all 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding-top: 64px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--bleu-light) 0%, #fff 50%, var(--rouge-light) 100%);
+  }
+  .hero-stripes {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+    display: flex; opacity: 0.06;
+  }
+  .hero-stripes div { flex: 1; }
+  .hero-stripes .s1 { background: var(--bleu); }
+  .hero-stripes .s2 { background: var(--blanc); }
+  .hero-stripes .s3 { background: var(--rouge); }
+
+  .hero-content {
+    position: relative; z-index: 1; max-width: 1100px; margin: 0 auto;
+    padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bleu); color: white; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: '★'; font-size: 9px; }
+  h1.hero-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.05; font-weight: 900; margin-bottom: 1.5rem; letter-spacing: -1px;
+  }
+  h1.hero-title em { font-style: italic; color: var(--rouge); }
+  .hero-desc { font-size: 17px; color: var(--gris); line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--bleu); color: white; padding: 14px 28px; border-radius: 4px;
+    font-weight: 500; font-size: 15px; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px; transition: all 0.2s; border: 2px solid var(--bleu);
+  }
+  .btn-primary:hover { background: #001880; border-color: #001880; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--noir); padding: 14px 28px; border-radius: 4px;
+    font-weight: 500; font-size: 15px; text-decoration: none; display: inline-flex;
+    align-items: center; gap: 8px; transition: all 0.2s; border: 2px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--noir); }
+
+  .hero-card {
+    background: white; border-radius: 16px; padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0,35,149,0.12); border: 1px solid var(--border);
+  }
+  .hero-card-top {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+  }
+  .french-flag-tall {
+    display: flex; width: 50px; height: 65px; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .french-flag-tall div { flex: 1; }
+  .french-flag-tall .f1 { background: var(--bleu); }
+  .french-flag-tall .f2 { background: var(--blanc); border-left: 1px solid #eee; border-right: 1px solid #eee; }
+  .french-flag-tall .f3 { background: var(--rouge); }
+  .hero-card-top-text h3 { font-family: 'Playfair Display', serif; font-size: 18px; }
+  .hero-card-top-text p { color: var(--gris); font-size: 13px; margin-top: 2px; }
+
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  .stat-item { padding: 1rem; background: var(--gris-light); border-radius: 8px; }
+  .stat-item .num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--bleu); }
+  .stat-item .lbl { font-size: 12px; color: var(--gris); margin-top: 2px; }
+
+  .quote-block {
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px;
+    color: var(--gris); border-left: 3px solid var(--rouge); padding-left: 1rem; line-height: 1.6;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .section-divider {
+    height: 4px; display: flex; margin: 0;
+    background: linear-gradient(to right, var(--bleu) 33.3%, var(--blanc) 33.3%, var(--blanc) 66.6%, var(--rouge) 66.6%);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--bleu); margin-bottom: 0.5rem; display: block;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.15; letter-spacing: -0.5px;
+  }
+  h2.section-title em { font-style: italic; color: var(--rouge); }
+  .section-desc { font-size: 16px; color: var(--gris); line-height: 1.7; margin-top: 1rem; max-width: 580px; }
+
+  /* ── ABOUT ── */
+  #about { background: none; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .about-text p { font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 1.2rem; }
+  .about-pillars { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .pillar {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .pillar:hover { border-color: var(--bleu); }
+  .pillar-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .pillar-icon.blue { background: var(--bleu-light); }
+  .pillar-icon.red { background: var(--rouge-light); }
+  .pillar-text h4 { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .pillar-text p { font-size: 13px; color: var(--gris); line-height: 1.5; }
+
+  /* ── EVENTS ── */
+  .events-bg { background: var(--gris-light); padding: 6rem 0; }
+  .events-bg > .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .event-card {
+    background: white; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .event-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,35,149,0.1); }
+  .event-card-top {
+    height: 6px;
+  }
+  .event-card-top.blue { background: var(--bleu); }
+  .event-card-top.red { background: var(--rouge); }
+  .event-card-top.mixed {
+    background: linear-gradient(to right, var(--bleu) 33%, white 33%, white 66%, var(--rouge) 66%);
+  }
+  .event-card-body { padding: 1.5rem; }
+  .event-date {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    color: var(--rouge); margin-bottom: 0.5rem; text-transform: uppercase;
+  }
+  .event-card-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 0.5rem; }
+  .event-card-body p { font-size: 13px; color: var(--gris); line-height: 1.6; margin-bottom: 1rem; }
+  .event-meta { display: flex; gap: 1rem; align-items: center; }
+  .event-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.5px; padding: 3px 10px;
+    border-radius: 20px; background: var(--bleu-light); color: var(--bleu);
+  }
+  .event-tag.red { background: var(--rouge-light); color: var(--rouge); }
+
+  /* ── TEAM ── */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .member-card {
+    text-align: center; padding: 1.5rem 1rem;
+    border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s;
+  }
+  .member-card:hover { border-color: var(--bleu); transform: translateY(-2px); }
+  .member-avatar {
+    width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: white;
+  }
+  .av-blue { background: var(--bleu); }
+  .av-red { background: var(--rouge); }
+  .av-dark { background: var(--noir); }
+  .av-mix { background: linear-gradient(135deg, var(--bleu), var(--rouge)); }
+  .member-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+  .member-card .role { font-size: 12px; color: var(--gris); }
+  .member-card .level {
+    display: inline-block; margin-top: 8px; font-size: 11px; padding: 2px 10px;
+    border-radius: 20px; background: var(--bleu-light); color: var(--bleu);
+  }
+
+  /* ── PODCAST ── */
+  .podcast-bg { background: var(--noir); padding: 6rem 0; color: white; }
+  .podcast-bg > .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .podcast-bg .section-label { color: #ef4b5e; }
+  .podcast-bg h2.section-title { color: white; }
+  .podcast-bg h2.section-title em { color: #ef4b5e; }
+  .podcast-bg .section-desc { color: #aaa; }
+  .podcast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .episode-card {
+    background: #1a1a1a; border-radius: 12px; padding: 1.5rem;
+    border: 1px solid #333; transition: border-color 0.2s;
+  }
+  .episode-card:hover { border-color: #ef4b5e; }
+  .ep-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .ep-num {
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
+    color: #ef4b5e; background: rgba(237,41,57,0.15); padding: 4px 10px;
+    border-radius: 20px; white-space: nowrap; margin-top: 2px;
+  }
+  .ep-title { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: white; line-height: 1.3; }
+  .ep-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 1rem; }
+  .ep-footer { display: flex; align-items: center; justify-content: space-between; }
+  .ep-duration { font-family: 'DM Mono', monospace; font-size: 11px; color: #666; }
+  .play-btn {
+    width: 36px; height: 36px; border-radius: 50%; background: var(--rouge);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    border: none; transition: background 0.2s;
+  }
+  .play-btn:hover { background: #c0001a; }
+  .play-btn svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
+
+  .podcast-cta {
+    margin-top: 2rem; padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, var(--bleu) 0%, #001880 100%);
+    border-radius: 12px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .podcast-cta p { color: rgba(255,255,255,0.8); font-size: 14px; margin-top: 4px; }
+  .podcast-cta h4 { color: white; font-size: 16px; font-weight: 500; }
+  .podcast-platforms { display: flex; gap: 10px; flex-wrap: wrap; }
+  .platform-tag {
+    background: rgba(255,255,255,0.15); color: white; font-size: 12px; font-weight: 500;
+    padding: 7px 14px; border-radius: 20px; text-decoration: none; transition: background 0.2s;
+  }
+  .platform-tag:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 12px; margin-top: 3rem;
+  }
+  .gallery-item {
+    border-radius: 8px; overflow: hidden; position: relative;
+    aspect-ratio: 1; cursor: pointer;
+  }
+  .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+  .gallery-item.tall { grid-row: span 2; aspect-ratio: 1/2; }
+  .gallery-placeholder {
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px; color: white;
+    font-size: 13px; text-align: center; padding: 1rem;
+  }
+  .gallery-placeholder svg { opacity: 0.7; }
+  .g1 { background: linear-gradient(135deg, #002395 0%, #1a3a9e 100%); }
+  .g2 { background: linear-gradient(135deg, #ed2939 0%, #c0001a 100%); }
+  .g3 { background: linear-gradient(135deg, #3a3a3a 0%, #1a1a1a 100%); }
+  .g4 { background: linear-gradient(135deg, #0d5c3a 0%, #0a4229 100%); }
+  .g5 { background: linear-gradient(135deg, #7b3f00 0%, #5a2d00 100%); }
+  .g6 { background: linear-gradient(135deg, #002395 0%, #ed2939 100%); }
+  .gallery-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white; font-size: 12px; padding: 1rem 0.75rem 0.75rem;
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .gallery-item:hover .gallery-label { opacity: 1; }
+
+  /* ── RESOURCES ── */
+  .resources-bg { background: var(--bleu-light); padding: 6rem 0; }
+  .resources-bg > .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .resource-card {
+    background: white; border-radius: 12px; padding: 1.5rem;
+    border: 1px solid var(--border); transition: all 0.2s; text-decoration: none; color: inherit; display: block;
+  }
+  .resource-card:hover { border-color: var(--bleu); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,35,149,0.08); }
+  .resource-icon {
+    width: 48px; height: 48px; border-radius: 10px; margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .ri-blue { background: var(--bleu-light); }
+  .ri-red { background: var(--rouge-light); }
+  .ri-dark { background: var(--gris-light); }
+  .resource-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
+  .resource-card p { font-size: 13px; color: var(--gris); line-height: 1.6; margin-bottom: 1rem; }
+  .resource-link {
+    font-size: 12px; font-weight: 500; color: var(--bleu);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .resource-link::after { content: '→'; }
+
+  /* ── JOIN / CONTACT ── */
+  .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; align-items: start; }
+  .join-info h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 1rem; }
+  .join-info p { font-size: 15px; color: var(--gris); line-height: 1.7; margin-bottom: 1.5rem; }
+  .join-perks { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .join-perks li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .perk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rouge); flex-shrink: 0; }
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; gap: 12px; align-items: flex-start; }
+  .contact-icon {
+    width: 40px; height: 40px; border-radius: 8px; background: var(--bleu-light);
+    display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+  }
+  .contact-item h5 { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+  .contact-item p { font-size: 13px; color: var(--gris); }
+
+  .join-form { background: white; border-radius: 16px; padding: 2rem; border: 1px solid var(--border); }
+  .join-form h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: #333; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--noir);
+    transition: border-color 0.2s; background: var(--gris-light);
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--bleu); background: white;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .submit-btn {
+    width: 100%; background: var(--bleu); color: white; border: none;
+    padding: 13px; border-radius: 8px; font-size: 15px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: #001880; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--noir); color: white; padding: 4rem 3rem 2rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 0.75rem; }
+  .footer-brand p { font-size: 13px; color: #888; line-height: 1.7; }
+  .footer-col h4 { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 1rem; font-family: 'DM Mono', monospace; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a { text-decoration: none; color: #aaa; font-size: 13px; transition: color 0.2s; }
+  .footer-col ul a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid #222; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: #555; }
+  .footer-flag { display: flex; height: 20px; width: 32px; border-radius: 2px; overflow: hidden; }
+  .footer-flag div { flex: 1; }
+  .footer-flag .f1 { background: var(--bleu); }
+  .footer-flag .f2 { background: #fff; }
+  .footer-flag .f3 { background: var(--rouge); }
+  .footer-tagline { font-size: 12px; color: #444; font-family: 'Playfair Display', serif; font-style: italic; }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    background: white; border-bottom: 1px solid var(--border); z-index: 99;
+    padding: 1rem 2rem; flex-direction: column; gap: 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--noir); font-size: 15px; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+    .hero-card { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .join-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .events-grid, .resources-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .podcast-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .events-bg > .inner, .podcast-bg > .inner, .resources-bg > .inner { padding: 0 1.5rem; }
+    .podcast-cta { flex-direction: column; gap: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-flag">
+      <span class="f1"></span><span class="f2"></span><span class="f3"></span>
+    </div>
+    <span class="nav-brand"><span>Le Club</span> Français · TUK</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#events">Événements</a></li>
+    <li><a href="#team">Équipe</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#resources">Ressources</a></li>
+    <li><a href="#join" class="nav-cta">Rejoindre</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">À propos</a>
+  <a href="#events" onclick="toggleMenu()">Événements</a>
+  <a href="#team" onclick="toggleMenu()">Équipe</a>
+  <a href="#podcast" onclick="toggleMenu()">Podcast</a>
+  <a href="#gallery" onclick="toggleMenu()">Galerie</a>
+  <a href="#resources" onclick="toggleMenu()">Ressources</a>
+  <a href="#join" onclick="toggleMenu()">Rejoindre</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripes"><div class="s1"></div><div class="s2"></div><div class="s3"></div></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag fade-up">Le Club Français — TUK</div>
+      <h1 class="hero-title fade-up delay-1">
+        Parlez.<br><em>Découvrez.</em><br>Connectez.
+      </h1>
+      <p class="hero-desc fade-up delay-2">The French Club at the Technical University of Kenya — where language, culture, and community come alive. Open to all levels, from beginners to fluent speakers.</p>
+      <div class="hero-btns fade-up delay-3">
+        <a href="#join" class="btn-primary">Rejoindre le club →</a>
+        <a href="#about" class="btn-secondary">En savoir plus</a>
+      </div>
+    </div>
+    <div class="fade-up delay-2">
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <div class="french-flag-tall"><div class="f1"></div><div class="f2"></div><div class="f3"></div></div>
+          <div class="hero-card-top-text">
+            <h3>Le Club Français</h3>
+            <p>Technical University of Kenya</p>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-item"><div class="num">120+</div><div class="lbl">Active members</div></div>
+          <div class="stat-item"><div class="num">6</div><div class="lbl">Years running</div></div>
+          <div class="stat-item"><div class="num">24+</div><div class="lbl">Events per year</div></div>
+          <div class="stat-item"><div class="num">🎙️</div><div class="lbl" style="font-size:13px;">Podcast series</div></div>
+        </div>
+        <div class="quote-block">"La langue est la maison de l'être." — Heidegger</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">À propos du club</span>
+  <h2 class="section-title">Who we <em>are</em></h2>
+  <p class="section-desc">A vibrant community of French language enthusiasts at TUK, united by a passion for francophone culture, language, and connection.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>The TUK French Club — <em>Le Club Français</em> — was founded to create a space where students from all academic disciplines can explore the French language and the rich tapestry of francophone cultures around the world.</p>
+      <p>Whether you're just starting out with <em>bonjour</em> or you're already conversational, our club welcomes you. We run weekly sessions, cultural events, film screenings, conversation circles, and our own podcast — all in the heart of Nairobi.</p>
+      <p>French is spoken by over 300 million people across 5 continents. Learning it opens doors to international careers, cultural exchange, and academic opportunities in the Francophone world — including right here in East Africa.</p>
+    </div>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-icon blue">🗣️</div>
+        <div class="pillar-text">
+          <h4>Language learning</h4>
+          <p>Weekly conversation circles, grammar workshops, and immersive sessions for all proficiency levels.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon red">🎭</div>
+        <div class="pillar-text">
+          <h4>Cultural immersion</h4>
+          <p>French cuisine nights, film screenings, Bastille Day celebrations, and francophone music events.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon blue">🌍</div>
+        <div class="pillar-text">
+          <h4>Community & networking</h4>
+          <p>Connect with fellow students, alumni, and French-speaking professionals across East Africa.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon red">🎙️</div>
+        <div class="pillar-text">
+          <h4>Our podcast</h4>
+          <p>Student-produced audio content exploring language, culture, and francophone voices — launched exclusively by TUK students.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EVENTS -->
+<div class="events-bg">
+  <div class="inner">
+    <span class="section-label">Événements</span>
+    <h2 class="section-title">What's <em>on</em></h2>
+    <p class="section-desc">From weekly meetings to grand cultural celebrations — there's always something happening at Le Club Français.</p>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-date">Every Wednesday · 5:00 PM</div>
+          <h3>Cercle de Conversation</h3>
+          <p>Our weekly conversation circle — practice your spoken French in a relaxed, supportive setting. All levels welcome.</p>
+          <div class="event-meta"><span class="event-tag">Weekly</span><span class="event-tag">Free entry</span></div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top red"></div>
+        <div class="event-card-body">
+          <div class="event-date">14 July · Annual</div>
+          <h3>Bastille Day Fête</h3>
+          <p>Celebrate France's national day with food, music, poetry readings, and a French film screening. Our biggest event of the year.</p>
+          <div class="event-meta"><span class="event-tag red">Annual</span><span class="event-tag">Open to all</span></div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top mixed"></div>
+        <div class="event-card-body">
+          <div class="event-date">Monthly · First Friday</div>
+          <h3>Ciné-club Français</h3>
+          <p>Monthly French film screening with subtitles, followed by a group discussion in French and English.</p>
+          <div class="event-meta"><span class="event-tag">Monthly</span><span class="event-tag">Film & discussion</span></div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-date">Every Term</div>
+          <h3>French Language Workshop</h3>
+          <p>Intensive grammar, pronunciation, and writing workshops — perfect for students preparing for DELF/DALF exams.</p>
+          <div class="event-meta"><span class="event-tag">Workshop</span><span class="event-tag">Certification prep</span></div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top red"></div>
+        <div class="event-card-body">
+          <div class="event-date">March · Cultural Month</div>
+          <h3>Semaine de la Francophonie</h3>
+          <p>A week-long celebration of the French-speaking world — featuring speakers, music, dance, and interactive cultural displays.</p>
+          <div class="event-meta"><span class="event-tag red">Cultural week</span><span class="event-tag">Campus-wide</span></div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-top mixed"></div>
+        <div class="event-card-body">
+          <div class="event-date">Bi-monthly</div>
+          <h3>Podcast Recording Sessions</h3>
+          <p>Join our student media team to record episodes for the club podcast. No experience needed — just enthusiasm and a voice.</p>
+          <div class="event-meta"><span class="event-tag">Media</span><span class="event-tag">Creative</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team">
+  <span class="section-label">Notre équipe</span>
+  <h2 class="section-title">Meet the <em>team</em></h2>
+  <p class="section-desc">Passionate students leading the club — from organizing events to producing content and teaching French.</p>
+  <div class="team-grid">
+    <div class="member-card">
+      <div class="member-avatar av-blue">AP</div>
+      <h4>Amina Patel</h4>
+      <div class="role">Club President</div>
+      <span class="level">Advanced · C1</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-red">JO</div>
+      <h4>James Ochieng</h4>
+      <div class="role">Vice President</div>
+      <span class="level">Advanced · B2</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-dark">FK</div>
+      <h4>Fatima Kariuki</h4>
+      <div class="role">Events Coordinator</div>
+      <span class="level">Intermediate · B1</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-mix">DN</div>
+      <h4>David Njoroge</h4>
+      <div class="role">Podcast Lead</div>
+      <span class="level">Advanced · C1</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-blue">LW</div>
+      <h4>Lilian Wambua</h4>
+      <div class="role">Language Coach</div>
+      <span class="level">Native-level · C2</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-red">EM</div>
+      <h4>Emmanuel Mutua</h4>
+      <div class="role">Social Media</div>
+      <span class="level">Intermediate · A2</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-dark">SI</div>
+      <h4>Sophie Irungu</h4>
+      <div class="role">Cultural Secretary</div>
+      <span class="level">Intermediate · B1</span>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar av-mix">TK</div>
+      <h4>Tobias Kamau</h4>
+      <div class="role">Treasurer</div>
+      <span class="level">Beginner · A1</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PODCAST -->
+<div class="podcast-bg">
+  <div class="inner" id="podcast">
+    <span class="section-label">Le Podcast</span>
+    <h2 class="section-title">Voices of <em>Nairobi</em></h2>
+    <p class="section-desc">Student-produced audio stories, language lessons, and conversations at the intersection of French culture and Kenyan life.</p>
+    <div class="podcast-grid">
+      <div class="episode-card">
+        <div class="ep-header">
+          <span class="ep-num">EP. 01</span>
+          <div class="ep-title">Pourquoi le Français ? — Why French in Kenya?</div>
+        </div>
+        <p class="ep-desc">The founding members discuss why they started learning French, and what the language means for career opportunities in East Africa.</p>
+        <div class="ep-footer">
+          <span class="ep-duration">28 min</span>
+          <button class="play-btn" aria-label="Play episode">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-header">
+          <span class="ep-num">EP. 02</span>
+          <div class="ep-title">L'Afrique Francophone — The French-speaking Africa</div>
+        </div>
+        <p class="ep-desc">Exploring Kenya's relationships with francophone neighbours — DRC, Rwanda, Burundi — and why French skills matter for East Africans.</p>
+        <div class="ep-footer">
+          <span class="ep-duration">34 min</span>
+          <button class="play-btn" aria-label="Play episode">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-header">
+          <span class="ep-num">EP. 03</span>
+          <div class="ep-title">Recettes & Souvenirs — Food and French memory</div>
+        </div>
+        <p class="ep-desc">A sensory episode: students share their favourite French recipes and the cultural memories attached to food, cooking, and sharing.</p>
+        <div class="ep-footer">
+          <span class="ep-duration">22 min</span>
+          <button class="play-btn" aria-label="Play episode">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="episode-card">
+        <div class="ep-header">
+          <span class="ep-num">EP. 04</span>
+          <div class="ep-title">Leçon du jour — French lesson: greetings & basics</div>
+        </div>
+        <p class="ep-desc">A beginner-friendly episode teaching common greetings, introductions, and everyday phrases — taught by our own club members.</p>
+        <div class="ep-footer">
+          <span class="ep-duration">19 min</span>
+          <button class="play-btn" aria-label="Play episode">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="podcast-cta">
+      <div>
+        <h4>🎙️ Listen & subscribe</h4>
+        <p>New episodes drop every two weeks — subscribe on your favourite platform</p>
+      </div>
+      <div class="podcast-platforms">
+        <a href="#" class="platform-tag">Spotify</a>
+        <a href="#" class="platform-tag">Apple Podcasts</a>
+        <a href="#" class="platform-tag">Google Podcasts</a>
+        <a href="#" class="platform-tag">RSS Feed</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <span class="section-label">Galerie</span>
+  <h2 class="section-title">Life at <em>Le Club</em></h2>
+  <p class="section-desc">Moments from our events, workshops, podcast recordings, and celebrations — captured in community.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item wide g1">
+      <div class="gallery-placeholder">
+        <svg width="32" height="32" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Bastille Day Fête 2024
+      </div>
+      <div class="gallery-label">Bastille Day Fête — July 2024</div>
+    </div>
+    <div class="gallery-item g2">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Conversation circle
+      </div>
+      <div class="gallery-label">Weekly conversation circle</div>
+    </div>
+    <div class="gallery-item g3">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Podcast studio
+      </div>
+      <div class="gallery-label">Podcast recording session</div>
+    </div>
+    <div class="gallery-item tall g4">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Semaine de la Francophonie
+      </div>
+      <div class="gallery-label">Semaine de la Francophonie 2024</div>
+    </div>
+    <div class="gallery-item g5">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        French cuisine night
+      </div>
+      <div class="gallery-label">French cuisine night</div>
+    </div>
+    <div class="gallery-item g6">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Ciné-club screening
+      </div>
+      <div class="gallery-label">Monthly Ciné-club</div>
+    </div>
+    <div class="gallery-item g2">
+      <div class="gallery-placeholder">
+        <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Workshop
+      </div>
+      <div class="gallery-label">DELF prep workshop</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- RESOURCES -->
+<div class="resources-bg">
+  <div class="inner" id="resources">
+    <span class="section-label">Ressources</span>
+    <h2 class="section-title">Learn <em>French</em></h2>
+    <p class="section-desc">Curated resources to accelerate your French journey — whether you're a total beginner or preparing for proficiency exams.</p>
+    <div class="resources-grid">
+      <a href="https://www.duolingo.com" target="_blank" class="resource-card">
+        <div class="resource-icon ri-blue">📱</div>
+        <h3>Duolingo French</h3>
+        <p>Start with daily bite-sized lessons. Great for absolute beginners — builds vocabulary and basic grammar through gamified exercises.</p>
+        <span class="resource-link">Visit resource</span>
+      </a>
+      <a href="https://www.bbc.co.uk/languages/french/" target="_blank" class="resource-card">
+        <div class="resource-icon ri-red">📻</div>
+        <h3>BBC French</h3>
+        <p>BBC's free online French course with audio, video, and structured lessons. Especially useful for listening comprehension.</p>
+        <span class="resource-link">Visit resource</span>
+      </a>
+      <a href="https://www.rfi.fr/fr/langue-fran%C3%A7aise/" target="_blank" class="resource-card">
+        <div class="resource-icon ri-blue">🌐</div>
+        <h3>RFI Langue Française</h3>
+        <p>French radio station's language learning section — real news audio with transcripts. Excellent for intermediate learners.</p>
+        <span class="resource-link">Visit resource</span>
+      </a>
+      <a href="https://www.tv5monde.com/apprendre-le-francais" target="_blank" class="resource-card">
+        <div class="resource-icon ri-red">📺</div>
+        <h3>TV5 Monde</h3>
+        <p>French-language TV network with free language learning exercises based on real broadcasts. Great for all levels.</p>
+        <span class="resource-link">Visit resource</span>
+      </a>
+      <a href="https://www.ciep.fr/delf-dalf" target="_blank" class="resource-card">
+        <div class="resource-icon ri-dark">📜</div>
+        <h3>DELF / DALF Certification</h3>
+        <p>Official French proficiency certifications (A1–C2) recognised worldwide. Our club offers prep workshops each term.</p>
+        <span class="resource-link">Learn about exams</span>
+      </a>
+      <a href="https://www.lepointdufle.net/" target="_blank" class="resource-card">
+        <div class="resource-icon ri-blue">✏️</div>
+        <h3>Le Point du FLE</h3>
+        <p>Comprehensive grammar exercises, vocabulary builders, and interactive activities. One of the best free grammar references online.</p>
+        <span class="resource-link">Practice grammar</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- JOIN / CONTACT -->
+<section id="join">
+  <span class="section-label">Rejoindre · Contact</span>
+  <h2 class="section-title">Join <em>us</em></h2>
+  <p class="section-desc">Become part of Le Club Français — all students at TUK are welcome, regardless of French level.</p>
+  <div class="join-grid">
+    <div>
+      <div class="join-info">
+        <h3>Why join Le Club Français?</h3>
+        <p>Membership is open to all TUK students. There's no minimum level — just curiosity and a willingness to learn. Here's what you get:</p>
+        <ul class="join-perks">
+          <li><span class="perk-dot"></span>Weekly conversation circles and language workshops</li>
+          <li><span class="perk-dot"></span>Access to exclusive events — Bastille Day, Ciné-club, cultural weeks</li>
+          <li><span class="perk-dot"></span>Opportunity to be part of our podcast production team</li>
+          <li><span class="perk-dot"></span>DELF/DALF exam prep support and guidance</li>
+          <li><span class="perk-dot"></span>Network with French-speaking professionals and alumni</li>
+          <li><span class="perk-dot"></span>Certificate of membership for your CV/portfolio</li>
+        </ul>
+      </div>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h5>Location</h5>
+            <p>Technical University of Kenya, Haile Selassie Avenue, Nairobi</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h5>Email</h5>
+            <p>frenchclub@tuk.ac.ke</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <h5>Instagram</h5>
+            <p>@tukfrenchclub</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📅</div>
+          <div>
+            <h5>Weekly meetings</h5>
+            <p>Wednesdays, 5:00 PM — Room B204, Main Block</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="join-form">
+      <h3>Membership form</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Jean">
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>TUK Student email</label>
+        <input type="email" placeholder="s123456@tuk.ac.ke">
+      </div>
+      <div class="form-group">
+        <label>Course / Department</label>
+        <input type="text" placeholder="e.g. Engineering, Business, Architecture...">
+      </div>
+      <div class="form-group">
+        <label>French level</label>
+        <select>
+          <option>Complete beginner — never studied French</option>
+          <option>A1 — Absolute beginner</option>
+          <option>A2 — Elementary</option>
+          <option>B1 — Intermediate</option>
+          <option>B2 — Upper intermediate</option>
+          <option>C1 — Advanced</option>
+          <option>C2 / Native speaker</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>How did you hear about us?</label>
+        <select>
+          <option>Friend / classmate</option>
+          <option>Social media</option>
+          <option>Campus notice board</option>
+          <option>Our podcast</option>
+          <option>Club fair / event</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything you'd like us to know? (optional)</label>
+        <textarea rows="3" placeholder="Your goals, interests, or questions..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Rejoindre le club →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="section-divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Le Club Français · TUK</h3>
+        <p>A student-led French language and culture club at the Technical University of Kenya. Promoting francophone language, culture, and community since 2018.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Club</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#team">Our team</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#join">Membership</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Activities</h4>
+        <ul>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#podcast">Podcast</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#events">Workshops</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">WhatsApp group</a></li>
+          <li><a href="#">Spotify</a></li>
+          <li><a href="#">frenchclub@tuk.ac.ke</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Le Club Français, Technical University of Kenya. All rights reserved.</p>
+      <div class="footer-flag"><div class="f1"></div><div class="f2"></div><div class="f3"></div></div>
+      <span class="footer-tagline">Liberté, Égalité, Fraternité</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function handleSubmit() {
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = '✓ Merci ! We\'ll be in touch soon.';
+    btn.style.background = '#0f6e56';
+    btn.disabled = true;
+  }
+
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const svg = this.querySelector('svg path');
+      const isPaused = svg.getAttribute('d') === 'M8 5v14l11-7z';
+      svg.setAttribute('d', isPaused ? 'M6 19h4V5H6v14zm8-14v14h4V5h-4z' : 'M8 5v14l11-7z');
+      this.style.background = isPaused ? '#444' : 'var(--rouge)';
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
