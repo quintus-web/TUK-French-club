@@ -231,39 +231,108 @@
     border-radius: 20px; background: var(--bleu-light); color: var(--bleu); font-weight: 500;
   }
 
-  /* ── PODCAST ── */
+  /* ── BRAND NEW RESPONSIVE VIDEO/PODCAST LAYOUT ── */
   .podcast-bg { background: var(--noir); padding: 6rem 0; color: white; }
   .podcast-bg > .inner { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
   .podcast-bg .section-label { color: #ef4b5e; }
   .podcast-bg h2.section-title { color: white; }
   .podcast-bg h2.section-title em { color: #ef4b5e; }
   .podcast-bg .section-desc { color: #aaa; }
-  .podcast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  
+  /* Renovated spacious layout layout grids */
+  .podcast-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 2.5rem; 
+    margin-top: 3rem; 
+  }
+  
   .episode-card {
-    background: #1a1a1a; border-radius: 12px; padding: 1.5rem;
-    border: 1px solid #333; transition: border-color 0.2s;
+    background: #161616;
+    border-radius: 16px;
+    border: 1px solid #282828;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 45% 55%; /* Splits media frame and description side-by-side */
+    min-height: 240px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .episode-card:hover { border-color: #ef4b5e; }
-  .ep-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
-  .ep-num {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
-    color: #ef4b5e; background: rgba(237,41,57,0.15); padding: 4px 10px;
-    border-radius: 20px; white-space: nowrap; margin-top: 2px;
+  .episode-card:hover { 
+    border-color: #ef4b5e; 
+    box-shadow: 0 10px 30px rgba(239, 75, 94, 0.05);
   }
-  .ep-title { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: white; line-height: 1.3; }
-  .ep-desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 1rem; }
-  .ep-footer { display: flex; align-items: center; justify-content: space-between; }
-  .ep-duration { font-family: 'DM Mono', monospace; font-size: 11px; color: #666; }
-  .play-btn {
-    width: 36px; height: 36px; border-radius: 50%; background: var(--rouge);
-    display: flex; align-items: center; justify-content: center; cursor: pointer;
-    border: none; transition: background 0.2s;
+  
+  .ep-video-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    aspect-ratio: 16 / 9;
   }
-  .play-btn:hover { background: #c0001a; }
-  .play-btn svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
+  .ep-video-frame iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: none; display: block;
+  }
+  
+  .ep-details-pane {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ep-meta-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+  }
+  .ep-tag-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #ef4b5e;
+    background: rgba(239, 75, 94, 0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .ep-runtime {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #666;
+  }
+  .ep-details-pane h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .ep-summary-text {
+    font-size: 13.5px;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .ep-action-btn-row {
+    display: flex;
+    align-items: center;
+  }
+  .ep-youtube-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: #ef4b5e;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .ep-youtube-link:hover {
+    color: white;
+    transform: translateX(3px);
+  }
 
   .podcast-cta {
-    margin-top: 2rem; padding: 1.5rem 2rem;
+    margin-top: 3rem; padding: 1.5rem 2rem;
     background: linear-gradient(135deg, var(--bleu) 0%, #001880 100%);
     border-radius: 12px; display: flex; align-items: center; justify-content: space-between;
   }
@@ -401,7 +470,7 @@
   }
   .submit-btn:hover { background: #001880; }
 
-  /* ── PUBLICATIONS ── */
+  /* ── PUBLICATIONS PANEL TAB VIEWS ── */
   .pub-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-top: 3rem; margin-bottom: 2.5rem; }
   .pub-tab {
     padding: 10px 22px; font-size: 14px; font-weight: 500; cursor: pointer;
@@ -490,90 +559,16 @@
   .pub-card-author span { font-size: 12px; color: var(--gris); }
   .pub-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gris); }
 
-  .ep-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-  .ep-full {
-    display: grid; grid-template-columns: 160px 1fr; gap: 0;
-    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s; background: white;
+  /* Tab View Layout Controls */
+  .pub-panel #panel-podcast-ep .episode-card {
+    background: white;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
   }
-  .ep-full:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,35,149,0.09); }
-  .ep-full-img { position: relative; }
-  .ep-full-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ep-full-img .ep-overlay {
-    position: absolute; inset: 0; background: rgba(0,35,149,0.5);
-    display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;
-  }
-  .ep-full:hover .ep-overlay { opacity: 1; }
-  .ep-play-big {
-    width: 48px; height: 48px; border-radius: 50%; background: white;
-    display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
-  }
-  .ep-play-big svg { width: 18px; height: 18px; fill: var(--bleu); margin-left: 3px; }
-  .ep-full-body { padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; }
-  .ep-full-body .ep-num-sm {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
-    color: var(--rouge); text-transform: uppercase; margin-bottom: 0.4rem;
-  }
-  .ep-full-body h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 0.4rem; }
-  .ep-full-body p { font-size: 12px; color: var(--gris); line-height: 1.5; }
-  .ep-full-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
-  .ep-dur { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gris); }
-  .ep-play-sm {
-    width: 30px; height: 30px; border-radius: 50%; background: var(--rouge);
-    display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
-  }
-  .ep-play-sm svg { width: 11px; height: 11px; fill: white; margin-left: 2px; }
+  .pub-panel #panel-podcast-ep .episode-card h3 { color: var(--noir); }
+  .pub-panel #panel-podcast-ep .episode-card .ep-summary-text { color: var(--gris); }
 
-  @media (max-width: 900px) {
-    .pub-featured { grid-template-columns: 1fr; }
-    .pub-featured-img { min-height: 220px; }
-    .pub-grid { grid-template-columns: 1fr; }
-    .ep-grid { grid-template-columns: 1fr; }
-    .ep-full { grid-template-columns: 120px 1fr; }
-  }
-
-  .mobile-menu {
-    display: none; position: fixed; top: 64px; left: 0; right: 0;
-    background: white; border-bottom: 1px solid var(--border); z-index: 99;
-    padding: 1rem 2rem; flex-direction: column; gap: 1rem;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { text-decoration: none; color: var(--noir); font-size: 15px; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-
-  /* ── FOOTER ── */
-  footer { background: var(--noir); color: white; padding: 4rem 3rem 2rem; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; }
-  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-  .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 0.75rem; }
-  .footer-brand p { font-size: 13px; color: #888; line-height: 1.7; }
-  .footer-col h4 { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 1rem; font-family: 'DM Mono', monospace; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .footer-col ul a { text-decoration: none; color: #aaa; font-size: 13px; transition: color 0.2s; }
-  .footer-col ul a:hover { color: white; }
-  .footer-bottom { border-top: 1px solid #222; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-  .footer-bottom p { font-size: 12px; color: #555; }
-  .footer-flag { display: flex; height: 20px; width: 32px; border-radius: 2px; overflow: hidden; }
-  .footer-flag div { flex: 1; }
-  .footer-flag .f1 { background: var(--bleu); }
-  .footer-flag .f2 { background: #fff; }
-  .footer-flag .f3 { background: var(--rouge); }
-  .footer-tagline { font-size: 12px; color: #444; font-family: 'Playfair Display', serif; font-style: italic; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up { animation: fadeUp 0.7s ease both; }
-  .delay-1 { animation-delay: 0.15s; }
-  .delay-2 { animation-delay: 0.3s; }
-  .delay-3 { animation-delay: 0.45s; }
-
-  @media (max-width: 1024px) {
-    .team-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .gallery-display-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
+  /* ── MOBILE MEDIA QUERIES ── */
   @media (max-width: 900px) {
     nav { padding: 0 1.5rem; }
     .nav-links { display: none; }
@@ -584,7 +579,16 @@
     .about-grid, .join-grid { grid-template-columns: 1fr; gap: 2rem; }
     .events-grid, .resources-grid { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
-    .podcast-grid { grid-template-columns: 1fr; }
+    
+    /* Collapses the side-by-side split structure into vertical blocks on phone screens */
+    .episode-card { 
+      grid-template-columns: 1fr; 
+    }
+    .ep-video-frame {
+      width: 100%;
+      height: auto;
+    }
+    
     .gallery-display-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .events-bg > .inner, .podcast-bg > .inner, .resources-bg > .inner { padding: 0 1.5rem; }
@@ -602,6 +606,7 @@
 </head>
 <body>
 
+<!-- NAVIGATION BAR -->
 <nav>
   <div class="nav-logo">
     <img src="assets/logo.png" alt="Le Club Français Logo" class="nav-logo-img">
@@ -633,6 +638,7 @@
   <a href="#join" onclick="toggleMenu()">Rejoindre</a>
 </div>
 
+<!-- HERO BANNER -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-stripes"><div class="s1"></div><div class="s2"></div><div class="s3"></div></div>
@@ -671,6 +677,7 @@
 
 <div class="section-divider"></div>
 
+<!-- ABOUT COMPONENT -->
 <section id="about">
   <span class="section-label">À propos du club</span>
   <h2 class="section-title">Who we <em>are</em></h2>
@@ -716,6 +723,7 @@
 
 <div class="section-divider"></div>
 
+<!-- EVENTS MATRIX GRID -->
 <div class="events-bg">
   <div class="inner">
     <span class="section-label">Événements</span>
@@ -780,6 +788,7 @@
   </div>
 </div>
 
+<!-- EXECUTIVE TEAM DIRECTORY -->
 <section id="team">
   <span class="section-label">Notre équipe</span>
   <h2 class="section-title">Meet the <em>team</em></h2>
@@ -788,9 +797,8 @@
     <div class="member-card">
       <div class="member-avatar-container"><img src="assets/profiles/coordinator.jpeg" alt="Hopekings Indeje" class="member-avatar-img"></div>
       <h4>Hopekings Indeje</h4>
-      <div class="role">Coordinateur </div>
-      <p class="member-desc">
-Grâce à mon sens de l’organisation et à ma spontanéité, je contribue activement à la réussite des activités et projets du club. Mon objectif est de renforcer l’esprit d’équipe, promouvoir le partage des idées et rendre chaque expérience enrichissante et mémorable.</p>
+      <div class="role">Events Coordinator</div>
+      <p class="member-desc">Grâce à mon sens de l’organisation et à ma spontanéité, je contribue activement à la réussite des activités et projets du club. Mon objectif est de rendre chaque expérience enrichissante et mémorable.</p>
       <span class="level">Intermediate · B1</span>
     </div>
     <div class="member-card">
@@ -825,7 +833,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
       <div class="member-avatar-container"><img src="assets/profiles/Assistant Social Media.jpeg" alt="Sophie Irungu" class="member-avatar-img"></div>
       <h4>Chloe Wanjiru</h4>
       <div class="role">Assistant Social Media Manager</div>
-      <p class="member-desc">:Passionate about building community and exploring French culture.Thrilled to contribute to the club's growth as your assistant social media manager!</p>
+      <p class="member-desc">Passionate about building community and exploring French culture. Thrilled to contribute to the club's growth as your assistant social media manager!</p>
       <span class="level">Intermediate · B1</span>
     </div>
   </div>
@@ -833,65 +841,60 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
 
 <div class="section-divider"></div>
 
+<!-- MAIN DARK MEDIA STREAM HUB -->
 <div class="podcast-bg">
   <div class="inner" id="podcast">
-    <span class="section-label">Le Podcast</span>
+    <span class="section-label">Le Podcast & Vidéo</span>
     <h2 class="section-title">Voices of <em>Nairobi</em></h2>
-    <p class="section-desc">Student-produced audio stories, language lessons, and conversations at the intersection of French culture and Kenyan life.</p>
+    <p class="section-desc">Stream student-produced stories, digital interviews, and lessons directly on your screen below.</p>
+    
     <div class="podcast-grid">
+      
+      <!-- Primary Video Spotlight -->
       <div class="episode-card">
-        <div class="ep-header">
-          <span class="ep-num">EP. 01</span>
-          <div class="ep-title">Pourquoi le Français ? — Why French in Kenya?</div>
+        <div class="ep-video-frame">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/mKUdMYTFEWY?si=Gx2W_9HBe07AAlMG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <p class="ep-desc">The founding members discuss why they started learning French, and what the language means for career opportunities in East Africa.</p>
-        <div class="ep-footer">
-          <span class="ep-duration">28 min</span>
-          <button class="play-btn" aria-label="Play episode">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 02</span>
+              <span class="ep-runtime">29 min</span>
+            </div>
+            <h3>Pourquoi le Français ? — Why French in Kenya?</h3>
+            <p class="ep-summary-text">The founding members explore what the French language means for engineering, tech, and international career opportunities within East Africa.</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/mKUdMYTFEWY?si=n9kZeuNIH7B6OS2Y" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
         </div>
       </div>
-      <div class="episode-card">
-        <div class="ep-header">
-          <span class="ep-num">EP. 02</span>
-          <div class="ep-title">L'Afrique Francophone — The French-speaking Africa</div>
-        </div>
-        <p class="ep-desc">Exploring Kenya's relationships with francophone neighbours — DRC, Rwanda, Burundi — and why French skills matter for East Africans.</p>
-        <div class="ep-footer">
-          <span class="ep-duration">34 min</span>
-          <button class="play-btn" aria-label="Play episode">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="episode-card">
-        <div class="ep-header">
-          <span class="ep-num">EP. 03</span>
-          <div class="ep-title">Recettes & Souvenirs — Food and French memory</div>
-        </div>
-        <p class="ep-desc">A sensory episode: students share their favourite French recipes and the cultural memories attached to food, cooking, and sharing.</p>
-        <div class="ep-footer">
-          <span class="ep-duration">22 min</span>
-          <button class="play-btn" aria-label="Play episode">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="episode-card">
-        <div class="ep-header">
-          <span class="ep-num">EP. 04</span>
-          <div class="ep-title">Leçon du jour — French lesson: greetings & basics</div>
-        </div>
-        <p class="ep-desc">A beginner-friendly episode teaching common greetings, introductions, and everyday phrases — taught by our own club members.</p>
-        <div class="ep-footer">
-          <span class="ep-duration">19 min</span>
-          <button class="play-btn" aria-label="Play episode">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-      </div>
+
     </div>
+    <div class="podcast-grid">
+      
+      <!-- Primary Video Spotlight -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc?si=bHyFDFezMqz-zZ34" title="Featured Episode Stream" allowfullscreen></iframe>
+        </div>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 01</span>
+              <span class="ep-runtime">28 min</span>
+            </div>
+            <h3>PExplore the interconnection between French and Tourism.</h3>
+            <p class="ep-summary-text">The founding members explore what the French language means for engineering, tech, and international career opportunities within East Africa.</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
     <div class="podcast-cta">
       <div>
         <h4>🎙️ Listen & subscribe</h4>
@@ -907,6 +910,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
   </div>
 </div>
 
+<!-- MASONRY PHOTO GALLERY COMPONENT -->
 <div class="section-divider"></div>
 <section id="gallery">
   <span class="section-label">Galerie</span>
@@ -1022,6 +1026,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
 
 <div class="section-divider"></div>
 
+<!-- RESOURCES COMPONENT -->
 <div class="resources-bg">
   <div class="inner" id="resources">
     <span class="section-label">Ressources</span>
@@ -1068,6 +1073,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
   </div>
 </div>
 
+<!-- REGISTRATION AND FOOTER MAP MATRIX -->
 <section id="join">
   <span class="section-label">Rejoindre · Contact</span>
   <h2 class="section-title">Join <em>us</em></h2>
@@ -1168,6 +1174,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
   </div>
 </section>
 
+<!-- TAB VIEW MULTIMEDIA CENTRE -->
 <div class="section-divider"></div>
 <section id="publications" style="max-width:1100px;margin:0 auto;padding:6rem 3rem;">
   <span class="section-label">Publications · Média</span>
@@ -1180,6 +1187,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
     <button class="pub-tab" onclick="switchTab('recaps')">📸 Event Recaps</button>
   </div>
 
+  <!-- WRITTEN CONTENT SUBPANEL -->
   <div class="pub-panel active" id="panel-articles">
     <div class="pub-featured">
       <div class="pub-featured-img">
@@ -1312,130 +1320,134 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
     </div>
   </div>
 
+  <!-- VIDEO INTEGRATED TAB ROW PANEL -->
   <div class="pub-panel" id="panel-podcast-ep">
     <div class="ep-grid">
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep1pod/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      
+      <!-- Episode 01 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc?si=bHyFDFezMqz-zZ34" title="Episode 1 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 01</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 01</span>
+              <span class="ep-runtime">28 min</span>
+            </div>
             <h3>Pourquoi le Français? — Why French in Kenya?</h3>
-            <p>The founding members discuss what the French language means for career opportunities in East Africa.</p>
+            <p class="ep-summary-text">The founding members discuss what the French language means for engineering, tech, and international career opportunities within East Africa.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">28 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
 
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep2africa/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      <!-- Episode 02 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 2 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 02</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 02</span>
+              <span class="ep-runtime">34 min</span>
+            </div>
             <h3>L'Afrique Francophone — The French-speaking Africa</h3>
-            <p>Exploring Kenya's relationships with francophone neighbours and why French matters for East Africans.</p>
+            <p class="ep-summary-text">Exploring Kenya's relationships with francophone neighbours and why French matters for East Africans.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">34 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
 
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep3food/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      <!-- Episode 03 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 3 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 03</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 03</span>
+              <span class="ep-runtime">22 min</span>
+            </div>
             <h3>Recettes & Souvenirs — Food and French memory</h3>
-            <p>Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
+            <p class="ep-summary-text">Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">22 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
 
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep4lesson/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      <!-- Episode 04 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 4 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 04</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 04</span>
+              <span class="ep-runtime">19 min</span>
+            </div>
             <h3>Leçon du jour — French greetings & everyday basics</h3>
-            <p>A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
+            <p class="ep-summary-text">A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">19 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
 
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep5jobs/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      <!-- Episode 05 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 5 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 05</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 05</span>
+              <span class="ep-runtime">41 min</span>
+            </div>
             <h3>Carrières Francophones — French for your career</h3>
-            <p>Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
+            <p class="ep-summary-text">Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">41 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
 
-      <div class="ep-full">
-        <div class="ep-full-img">
-          <img src="https://picsum.photos/seed/ep6music/400/300" alt="Episode cover">
-          <div class="ep-overlay">
-            <button class="ep-play-big" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
+      <!-- Episode 06 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 6 Player" allowfullscreen></iframe>
         </div>
-        <div class="ep-full-body">
+        <div class="ep-details-pane">
           <div>
-            <div class="ep-num-sm">Episode 06</div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 06</span>
+              <span class="ep-runtime">37 min</span>
+            </div>
             <h3>La Musique Française — from Brel to Stromae</h3>
-            <p>A musical journey through French-language music — from classic chansons to contemporary Afropop crossovers.</p>
+            <p class="ep-summary-text">A musical journey through French-language music — from classic chansons to contemporary Afropop crossovers.</p>
           </div>
-          <div class="ep-full-footer">
-            <span class="ep-dur">37 min</span>
-            <button class="ep-play-sm" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
+  <!-- EVENT RECAP SUBPANEL -->
   <div class="pub-panel" id="panel-recaps">
     <div class="pub-featured">
       <div class="pub-featured-img">
@@ -1515,6 +1527,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
   </div>
 </section>
 
+<!-- FOOTER SECTOR -->
 <div class="section-divider"></div>
 <footer>
   <div class="footer-inner">
@@ -1600,7 +1613,7 @@ Grâce à mon sens de l’organisation et à ma spontanéité, je contribue acti
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card, .pub-card, .ep-full, .gallery-photo-item').forEach(el => {
+  document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card, .pub-card, .gallery-photo-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
