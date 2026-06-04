@@ -568,6 +568,68 @@
   .pub-panel #panel-podcast-ep .episode-card h3 { color: var(--noir); }
   .pub-panel #panel-podcast-ep .episode-card .ep-summary-text { color: var(--gris); }
 
+  /* ── FOOTER ── */
+  .section-divider { height: 1px; background: var(--border); margin: 3rem 0; }
+  
+  footer {
+    background: var(--noir); color: white; padding: 4rem 3rem;
+  }
+  
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;
+    padding-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;
+    margin-bottom: 1rem; letter-spacing: -0.5px;
+  }
+  
+  .footer-brand p {
+    font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.7); font-weight: 300;
+  }
+  
+  .footer-col h4 {
+    font-size: 14px; font-weight: 600; margin-bottom: 1.2rem; letter-spacing: 0.3px;
+  }
+  
+  .footer-col ul { list-style: none; }
+  
+  .footer-col ul li { margin-bottom: 0.8rem; }
+  
+  .footer-col ul li a {
+    font-size: 13px; color: rgba(255, 255, 255, 0.7); text-decoration: none;
+    transition: color 0.2s; font-weight: 300;
+  }
+  
+  .footer-col ul li a:hover { color: var(--rouge); }
+  
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    padding-top: 1.5rem; flex-wrap: wrap;
+  }
+  
+  .footer-bottom p {
+    font-size: 12px; color: rgba(255, 255, 255, 0.6); margin: 0;
+  }
+  
+  .footer-flag {
+    display: flex; gap: 0; height: 20px;
+  }
+  
+  .footer-flag div { flex: 1; height: 20px; }
+  
+  .footer-flag .f1 { background: var(--bleu); }
+  .footer-flag .f2 { background: white; }
+  .footer-flag .f3 { background: var(--rouge); }
+  
+  .footer-tagline {
+    font-size: 12px; font-style: italic; color: rgba(255, 255, 255, 0.6);
+    font-family: 'Playfair Display', serif;
+  }
+
   /* ── MOBILE MEDIA QUERIES ── */
   @media (max-width: 900px) {
     nav { padding: 0 1.5rem; }
