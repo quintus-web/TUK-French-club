@@ -870,16 +870,17 @@
     <span class="nav-brand"><span>Le Club</span> Français · TUK</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#events">Événements</a></li>
-    <li><a href="#team">Équipe</a></li>
-    <li><a href="#podcast">Podcast</a></li>
-    <li><a href="#gallery">Galerie</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#resources">Ressources</a></li>
-    <li><a href="admin.html">Admin</a></li>
-    <li><a href="#join" class="nav-cta">Rejoindre</a></li>
+    <li><a href="#about" data-en="About" data-fr="À propos">À propos</a></li>
+    <li><a href="#events" data-en="Events" data-fr="Événements">Événements</a></li>
+    <li><a href="#team" data-en="Team" data-fr="Équipe">Équipe</a></li>
+    <li><a href="#podcast" data-en="Podcast" data-fr="Podcast">Podcast</a></li>
+    <li><a href="#gallery" data-en="Gallery" data-fr="Galerie">Galerie</a></li>
+    <li><a href="#publications" data-en="Publications" data-fr="Publications">Publications</a></li>
+    <li><a href="#resources" data-en="Resources" data-fr="Ressources">Ressources</a></li>
+    <li><a href="admin.html" data-en="Admin" data-fr="Admin">Admin</a></li>
+    <li><a href="#join" class="nav-cta" data-en="Join" data-fr="Rejoindre">Rejoindre</a></li>
   </ul>
+  <div class="language-toggle" onclick="toggleLanguage()" style="margin-left: 1rem; cursor: pointer; padding: 6px 12px; border-radius: 8px; background: var(--bleu-light); color: var(--bleu); font-size: 12px; font-weight: 500;" id="langToggle">FR</div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </div>
@@ -907,10 +908,10 @@
       <h1 class="hero-title fade-up delay-1">
         Parlez.<br><em>Découvrez.</em><br>Connectez.
       </h1>
-      <p class="hero-desc fade-up delay-2">The French Club at the Technical University of Kenya — where language, culture, and community come alive. Open to all levels, from beginners to fluent speakers.</p>
+      <p class="hero-desc fade-up delay-2" data-en="The French Club at the Technical University of Kenya — where language, culture, and community come alive. Open to all levels, from beginners to fluent speakers." data-fr="Le Club Français à l'Université Technique du Kenya — où la langue, la culture et la communauté prennent vie. Ouvert à tous les niveaux, des débutants aux locuteurs expérimentés.">The French Club at the Technical University of Kenya — where language, culture, and community come alive. Open to all levels, from beginners to fluent speakers.</p>
       <div class="hero-btns fade-up delay-3">
-        <a href="#join" class="btn-primary">Rejoindre le club →</a>
-        <a href="#about" class="btn-secondary">En savoir plus</a>
+        <a href="#join" class="btn-primary" data-en="Join the club →" data-fr="Rejoindre le club →">Rejoindre le club →</a>
+        <a href="#about" class="btn-secondary" data-en="Learn more" data-fr="En savoir plus">En savoir plus</a>
       </div>
       <div class="hero-decor">
         <img src="assets/Club meeting/Club meet 2.jpeg" alt="" class="decor-img">
@@ -941,9 +942,9 @@
 
 <!-- ABOUT COMPONENT -->
 <section id="about">
-  <span class="section-label">À propos du club</span>
-  <h2 class="section-title">Who we <em>are</em></h2>
-  <p class="section-desc">A vibrant community of French language enthusiasts at TUK, united by a passion for francophone culture, language, and connection.</p>
+  <span class="section-label" data-en="About the club" data-fr="À propos du club">À propos du club</span>
+  <h2 class="section-title" data-en="Who we <em>are</em>" data-fr="Qui sommes-nous&nbsp;?">Who we <em>are</em></h2>
+  <p class="section-desc" data-en="A vibrant community of French language enthusiasts at TUK, united by a passion for francophone culture, language, and connection." data-fr="Une communauté dynamique d'enthousiastes de la langue française à TUK, unis par une passion pour la culture francophone, la langue et les connexions.">A vibrant community of French language enthusiasts at TUK, united by a passion for francophone culture, language, and connection.</p>
   <div class="about-grid">
     <div class="about-text">
       <p>The TUK French Club — <em>Le Club Français</em> — was founded to create a space where students from all academic disciplines can explore the French language and the rich tapestry of francophone cultures around the world.</p>
@@ -1117,7 +1118,7 @@
     <h2 class="section-title">Voices of <em>Nairobi</em></h2>
     <p class="section-desc">Stream student-produced stories, digital interviews, and lessons directly on your screen below.</p>
     
-    <div class="podcast-grid">
+    <div class="podcast-grid" id="podcastGrid">
       
       <!-- EP. 01 -->
       <div class="episode-card">
@@ -1157,6 +1158,90 @@
           </div>
           <div class="ep-action-btn-row">
             <a href="https://youtu.be/mKUdMYTFEWY?si=n9kZeuNIH7B6OS2Y" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EP. 03 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <img src="assets/End of Semester/Semester 3.jpeg" alt="Episode background" class="ep-bg-image">
+          <iframe src="https://www.youtube.com/embed/EF_RsLtNH60?si=t7piDEJr8rXi5EmU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 03</span>
+              <span class="ep-runtime">27 min</span>
+            </div>
+            <h3>Le français au cœur du tourisme à la TU-K</h3>
+            <p class="ep-summary-text">– La langue en action, nous rencontrons les étudiants en tourisme de la Technical University of Kenya ainsi que leur enseignante</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/EF_RsLtNH60" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EP. 04 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <img src="assets/Drama Festival/Festival 3.jpeg" alt="Episode background" class="ep-bg-image">
+          <iframe src="https://www.youtube.com/embed/tZv-bfa0W-s?si=d5V6mDHH5I3C-UBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 04</span>
+              <span class="ep-runtime">24 min</span>
+            </div>
+            <h3>Recettes & Souvenirs — Food and French memory</h3>
+            <p class="ep-summary-text">Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/tZv-bfa0W-s" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EP. 05 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <img src="assets/Innovation week/Innovation week 4.jpeg" alt="Episode background" class="ep-bg-image">
+          <iframe src="https://www.youtube.com/embed/Jurz2CP9Fj4?si=gfY6fKUwvNi6efCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 05</span>
+              <span class="ep-runtime">35 min</span>
+            </div>
+            <h3>Leçon du jour — French greetings & everyday basics</h3>
+            <p class="ep-summary-text">A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/Jurz2CP9Fj4" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EP. 06 -->
+      <div class="episode-card">
+        <div class="ep-video-frame">
+          <img src="assets/Club meeting/Club meet 3.jpeg" alt="Episode background" class="ep-bg-image">
+          <iframe src="https://www.youtube.com/embed/p6Jvxd1VJd8?si=Sc57uMwxXdX54Vo7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ep-details-pane">
+          <div>
+            <div class="ep-meta-header">
+              <span class="ep-tag-pill">EP. 06</span>
+              <span class="ep-runtime">40 min</span>
+            </div>
+            <h3>Carrières Francophones — French for your career</h3>
+            <p class="ep-summary-text">Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
+          </div>
+          <div class="ep-action-btn-row">
+            <a href="https://youtu.be/p6Jvxd1VJd8" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
@@ -1591,7 +1676,7 @@
 
   <!-- VIDEO INTEGRATED TAB ROW PANEL -->
   <div class="pub-panel" id="panel-podcast-ep">
-    <div class="ep-grid">
+    <div class="ep-grid" id="epGrid">
       
       <!-- Episode 01 -->
       <div class="episode-card">
@@ -1636,19 +1721,19 @@
       <!-- Episode 03 -->
       <div class="episode-card">
         <div class="ep-video-frame">
-          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 3 Player" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/EF_RsLtNH60?si=t7piDEJr8rXi5EmU" title="Episode 3 Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="ep-details-pane">
           <div>
             <div class="ep-meta-header">
               <span class="ep-tag-pill">EP. 03</span>
-              <span class="ep-runtime">22 min</span>
+              <span class="ep-runtime">27 min</span>
             </div>
-            <h3>Recettes & Souvenirs — Food and French memory</h3>
-            <p class="ep-summary-text">Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
+            <h3>Le français au cœur du tourisme à la TU-K</h3>
+            <p class="ep-summary-text">– La langue en action, nous rencontrons les étudiants en tourisme de la Technical University of Kenya ainsi que leur enseignante</p>
           </div>
           <div class="ep-action-btn-row">
-            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+            <a href="https://youtu.be/EF_RsLtNH60" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
@@ -1656,19 +1741,19 @@
       <!-- Episode 04 -->
       <div class="episode-card">
         <div class="ep-video-frame">
-          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 4 Player" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/tZv-bfa0W-s?si=d5V6mDHH5I3C-UBI" title="Episode 4 Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="ep-details-pane">
           <div>
             <div class="ep-meta-header">
               <span class="ep-tag-pill">EP. 04</span>
-              <span class="ep-runtime">19 min</span>
+              <span class="ep-runtime">24 min</span>
             </div>
-            <h3>Leçon du jour — French greetings & everyday basics</h3>
-            <p class="ep-summary-text">A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
+            <h3>Recettes & Souvenirs — Food and French memory</h3>
+            <p class="ep-summary-text">Students share their favourite French recipes and the cultural memories attached to food and cooking.</p>
           </div>
           <div class="ep-action-btn-row">
-            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+            <a href="https://youtu.be/tZv-bfa0W-s" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
@@ -1676,19 +1761,19 @@
       <!-- Episode 05 -->
       <div class="episode-card">
         <div class="ep-video-frame">
-          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 5 Player" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/Jurz2CP9Fj4?si=gfY6fKUwvNi6efCW" title="Episode 5 Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="ep-details-pane">
           <div>
             <div class="ep-meta-header">
               <span class="ep-tag-pill">EP. 05</span>
-              <span class="ep-runtime">41 min</span>
+              <span class="ep-runtime">35 min</span>
             </div>
-            <h3>Carrières Francophones — French for your career</h3>
-            <p class="ep-summary-text">Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
+            <h3>Leçon du jour — French greetings & everyday basics</h3>
+            <p class="ep-summary-text">A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.</p>
           </div>
           <div class="ep-action-btn-row">
-            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+            <a href="https://youtu.be/Jurz2CP9Fj4" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
@@ -1696,19 +1781,19 @@
       <!-- Episode 06 -->
       <div class="episode-card">
         <div class="ep-video-frame">
-          <iframe src="https://www.youtube.com/embed/zxTrkkd8QXc" title="Episode 6 Player" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/p6Jvxd1VJd8?si=Sc57uMwxXdX54Vo7" title="Episode 6 Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="ep-details-pane">
           <div>
             <div class="ep-meta-header">
               <span class="ep-tag-pill">EP. 06</span>
-              <span class="ep-runtime">37 min</span>
+              <span class="ep-runtime">40 min</span>
             </div>
-            <h3>La Musique Française — from Brel to Stromae</h3>
-            <p class="ep-summary-text">A musical journey through French-language music — from classic chansons to contemporary Afropop crossovers.</p>
+            <h3>Carrières Francophones — French for your career</h3>
+            <p class="ep-summary-text">Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.</p>
           </div>
           <div class="ep-action-btn-row">
-            <a href="https://youtu.be/zxTrkkd8QXc" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
+            <a href="https://youtu.be/p6Jvxd1VJd8" target="_blank" class="ep-youtube-link">Open on YouTube App →</a>
           </div>
         </div>
       </div>
@@ -1878,8 +1963,8 @@
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateY(0)';
       }
-    });
-  }, { threshold: 0.1 });
+});
+   }, { threshold: 0.1 });
 
   document.querySelectorAll('.event-card, .member-card, .resource-card, .episode-card, .pub-card, .gallery-photo-item').forEach(el => {
     el.style.opacity = '0';
@@ -1887,6 +1972,20 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+</script>
+<script src="cms.js"></script>
+<script>
+  cmsInit();
+  
+  // Language toggle
+  let currentLang = 'fr';
+  function toggleLanguage() {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    document.getElementById('langToggle').textContent = currentLang.toUpperCase();
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${currentLang}`);
+    });
+  }
 </script>
 </body>
 </html>

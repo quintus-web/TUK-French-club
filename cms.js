@@ -50,10 +50,10 @@ const DEFAULTS = {
   episodes: [
     { id: 1, ep: 'EP. 01', runtime: '28 min', title: 'Explore the interconnection between French and Tourism', summary: 'The founding members explore what the French language means for engineering, tech, and international career opportunities within East Africa.', youtubeId: 'zxTrkkd8QXc', youtubeUrl: 'https://youtu.be/zxTrkkd8QXc' },
     { id: 2, ep: 'EP. 02', runtime: '29 min', title: 'Pourquoi le Français ? — Why French in Kenya?', summary: 'The founding members explore what the French language means for engineering, tech, and international career opportunities within East Africa.', youtubeId: 'mKUdMYTFEWY', youtubeUrl: 'https://youtu.be/mKUdMYTFEWY' },
-    { id: 3, ep: 'EP. 03', runtime: '34 min', title: "L'Afrique Francophone — The French-speaking Africa", summary: "Exploring Kenya's relationships with francophone neighbours and why French matters for East Africans.", youtubeId: 'p6Jvxd1VJd8', youtubeUrl: 'https://youtu.be/p6Jvxd1VJd8' },
-    { id: 4, ep: 'EP. 04', runtime: '22 min', title: 'Recettes & Souvenirs — Food and French memory', summary: 'Students share their favourite French recipes and the cultural memories attached to food and cooking.', youtubeId: 'Jurz2CP9Fj4', youtubeUrl: 'https://youtu.be/Jurz2CP9Fj4' },
-    { id: 5, ep: 'EP. 05', runtime: '41 min', title: 'Carrières Francophones — French for your career', summary: 'Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.', youtubeId: 'tZv-bfa0W-s', youtubeUrl: 'https://youtu.be/tZv-bfa0W-s' },
-    { id: 6, ep: 'EP. 06', runtime: '37 min', title: 'La Musique Française — from Brel to Stromae', summary: 'A musical journey through French-language music — from classic chansons to contemporary Afropop crossovers.', youtubeId: 'mKUdMYTFEWY', youtubeUrl: 'https://youtu.be/mKUdMYTFEWY' },
+    { id: 3, ep: 'EP. 03', runtime: '27 min', title: 'Le français au cœur du tourisme à la TU-K', summary: '– La langue en action, nous rencontrons les étudiants en tourisme de la Technical University of Kenya ainsi que leur enseignante', youtubeId: 'EF_RsLtNH60', youtubeUrl: 'https://youtu.be/EF_RsLtNH60' },
+    { id: 4, ep: 'EP. 04', runtime: '24 min', title: 'Recettes & Souvenirs — Food and French memory', summary: 'Students share their favourite French recipes and the cultural memories attached to food and cooking.', youtubeId: 'tZv-bfa0W-s', youtubeUrl: 'https://youtu.be/tZv-bfa0W-s' },
+    { id: 5, ep: 'EP. 05', runtime: '35 min', title: 'Leçon du jour — French greetings & everyday basics', summary: 'A beginner-friendly lesson teaching common greetings, introductions, and everyday phrases.', youtubeId: 'Jurz2CP9Fj4', youtubeUrl: 'https://youtu.be/Jurz2CP9Fj4' },
+    { id: 6, ep: 'EP. 06', runtime: '40 min', title: 'Carrières Francophones — French for your career', summary: 'Alumni share how French opened doors at the AU, EU, diplomatic missions, and international NGOs.', youtubeId: 'p6Jvxd1VJd8', youtubeUrl: 'https://youtu.be/p6Jvxd1VJd8' },
   ],
 
   articles: [
@@ -130,9 +130,20 @@ function renderEpisodes(containerId) {
   const episodes = cmsGet('episodes');
   const container = document.getElementById(containerId);
   if (!container) return;
-  container.innerHTML = episodes.map(ep => `
+  
+  const bgImages = [
+    'assets/Club meeting/Club meet 1.jpeg',
+    'assets/End of Semester/Semester 2.jpeg',
+    'assets/End of Semester/Semester 3.jpeg',
+    'assets/Drama Festival/Festival 3.jpeg',
+    'assets/Innovation week/Innovation week 4.jpeg',
+    'assets/Club meeting/Club meet 4.jpeg'
+  ];
+  
+  container.innerHTML = episodes.map((ep, idx) => `
     <div class="episode-card">
       <div class="ep-video-frame">
+        <img src="${bgImages[idx] || bgImages[0]}" alt="Episode background" class="ep-bg-image">
         <iframe src="https://www.youtube.com/embed/${ep.youtubeId}" title="${ep.title}" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="ep-details-pane">
